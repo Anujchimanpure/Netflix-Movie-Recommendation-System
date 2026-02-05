@@ -31,11 +31,30 @@ The system:
 # Technologies Used
 
 Python
-
 Pandas & NumPy – data processing
-
 Scikit-learn – similarity computation
-
 Streamlit – web application UI
+
+# Dataset Details
+
+Based on the Netflix Movies & TV Shows dataset
+Cleaned and extended manually for demonstration
+
+Includes:
+  Title
+  Description
+  Cast
+  Director
+  Genre
+  Duration
+  Additional derived features:
+  duration_value
+  duration_type
+
+
+# Note !!
+
+“The dataset was intentionally kept limited to focus on recommendation logic and similarity modeling.
+The system is designed to scale seamlessly with larger or real-time datasets.”
 
 OMDb API – poster and metadata fetching
