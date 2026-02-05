@@ -34,6 +34,7 @@ Python
 Pandas & NumPy – data processing
 Scikit-learn – similarity computation
 Streamlit – web application UI
+OMDb API – poster and metadata fetching
 
 # Dataset Details
 
@@ -57,4 +58,7 @@ Includes:
 “The dataset was intentionally kept limited to focus on recommendation logic and similarity modeling.
 The system is designed to scale seamlessly with larger or real-time datasets.”
 
-OMDb API – poster and metadata fetching
+
+# License
+
+This project is for educational and academic purposes only.
