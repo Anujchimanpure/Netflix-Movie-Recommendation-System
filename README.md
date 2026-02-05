@@ -31,9 +31,13 @@ The system:
 # Technologies Used
 
 Python
+
 Pandas & NumPy – data processing
+
 Scikit-learn – similarity computation
+
 Streamlit – web application UI
+
 OMDb API – poster and metadata fetching
 
 # Dataset Details
