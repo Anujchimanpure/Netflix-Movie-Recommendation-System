@@ -110,8 +110,18 @@ df = pd.read_csv("netflix_clean_data.csv")
 df["title_clean"] = df["title"].str.lower().str.strip()
 df["description"] = df["description"].fillna("Description not available.")
 
-with open("similarity.pkl", "rb") as f:
-    similarity = pickle.load(f)
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+@st.cache_data
+def compute_similarity(dataframe):
+    tfidf = TfidfVectorizer(stop_words='english')
+    tfidf_matrix = tfidf.fit_transform(dataframe['description'])
+    similarity_matrix = cosine_similarity(tfidf_matrix)
+    return similarity_matrix
+
+similarity = compute_similarity(df)
+
 
 # ================= OMDb =================
 OMDB_API_KEY = "bbe50b43"
@@ -168,7 +178,7 @@ st.markdown("## 🔍 Search a Movie")
 
 movie_name = st.text_input(
     "",
-    placeholder="Type the exact movie name (e.g. Inception)"
+    placeholder="Type the exact movie name (e.g. Iron Man)"
 )
 
 submit = st.button("Recommend")
@@ -233,3 +243,20 @@ if submit:
                 )
         
                 st.markdown('</div>', unsafe_allow_html=True)
+
+
+st.markdown("""
+<hr style="margin-top:60px; border: 0.5px solid #222;">
+
+<div style="
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    padding: 20px 10px 10px 10px;
+    line-height: 1.6;
+">
+    ⚠️ This recommendation model is trained on a limited dataset. - Some movies or posters may not appear.<br>
+    This project is built for learning and demonstration purposes.
+</div>
+""", unsafe_allow_html=True)
+
